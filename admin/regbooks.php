@@ -90,7 +90,7 @@
 			<table class="table-bordered" width="900px" style="text-align: center">
 				<tr>
 					<th>Name:</th>
-					<th>Author:</th>
+					<!--<th>Author:</th> -->
 					<th>Price:</th>
 					<th>Number:</th>
 				</tr>
@@ -98,13 +98,13 @@
 					$query_run = mysqli_query($connection,$query);
 					while($row = mysqli_fetch_assoc($query_run)){
 						$book_name = $row['book_name'];
-						$author_name = $row['author_name'];
+						//$author_name = $row['author_name'];
 						$price = $row['book_price'];
 						$book_no = $row['book_no'];
 				?>
 						<tr>
 							<td><?php echo $book_name;?></td>
-							<td><?php echo $author_name;?></td>
+							<!--  <td><?php echo $author_name;?>  </td>-->
 							<td><?php echo $price;?></td>
 							<td><?php echo $book_no;?></td>
 						</tr>

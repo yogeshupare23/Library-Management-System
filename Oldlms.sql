@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2-dev+20240309.aaf7188717
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2024 at 03:58 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.4
+-- Generation Time: Apr 22, 2020 at 08:10 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,7 +33,7 @@ CREATE TABLE `admins` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(250) NOT NULL,
-  `mobile` bigint(10) NOT NULL
+  `mobile` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -40,8 +41,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `mobile`) VALUES
-(1, 'Yogesh Upare', 'yogeshupare23@gmail.com', 'yogi', 9284565664),
-(2, 'mitali', 'mitali@gmali.com', 'mitu', 8999524541);
+(1, 'admin', 'admin@gmail.com', 'admin@1234', 1148458757);
 
 -- --------------------------------------------------------
 
@@ -61,8 +61,7 @@ CREATE TABLE `authors` (
 INSERT INTO `authors` (`author_id`, `author_name`) VALUES
 (102, 'M D Guptaa'),
 (103, 'Chetan Bhagat'),
-(104, 'Munshi Prem Chand'),
-(107, 'Yogesh Upare');
+(104, 'Munshi Prem Chand');
 
 -- --------------------------------------------------------
 
@@ -85,10 +84,7 @@ CREATE TABLE `books` (
 
 INSERT INTO `books` (`book_id`, `book_name`, `author_id`, `cat_id`, `book_no`, `book_price`) VALUES
 (1, 'Software engineering', 101, 1, 4518, 270),
-(2, 'Data structure', 102, 2, 6541, 300),
-(11, 'php', 0, 0, 2326, 500),
-(12, 'c', 0, 0, 2323, 320),
-(13, 'ghrtht', 0, 0, 555, 125);
+(2, 'Data structure', 102, 2, 6541, 300);
 
 -- --------------------------------------------------------
 
@@ -109,8 +105,7 @@ INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
 (1, 'Computer Science Engineering '),
 (2, 'Novel'),
 (4, 'Motivational'),
-(5, 'Story'),
-(11, 'php');
+(5, 'Story');
 
 -- --------------------------------------------------------
 
@@ -133,10 +128,8 @@ CREATE TABLE `issued_books` (
 --
 
 INSERT INTO `issued_books` (`s_no`, `book_no`, `book_name`, `book_author`, `student_id`, `status`, `issue_date`) VALUES
-(1, 6541, 'Data structure', 'D S Gupta', 4, 1, '2023-02-600:00:00'),
-(18, 7845, 'half Girlfriend', 'Chetan Bhagat', 2, 1, '2020-04-22'),
-(19, 6541, 'Data structure', 'M D Guptaa', 101, 1, '2022-09-24'),
-(20, 1033, 'php', 'M D Guptaa', 103, 1, '2023-02-6');
+(1, 6541, 'Data structure', 'D S Gupta', 4, 1, '0000-00-00 00:00:00'),
+(18, 7845, 'half Girlfriend', 'Chetan Bhagat', 2, 1, '2020-04-22');
 
 -- --------------------------------------------------------
 
@@ -157,14 +150,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `mobile`, `address`) VALUES
-(1, 'ram', 'ram@gmail.com', 'ram', 8888288741, 'BEED'),
-(2, 'Rajshri Madhukar Upare', 'rajshri@gmail.com', 'rajshri', 9175727880, 'Beed'),
-(4, 'user', 'user@gmail.com', 'user@1234', 2147483644, 'XYZ Coloney, PQR Nagar , Beed'),
-(7, 'hemant', 'hemant@gmail.com', 'hemant@123', 2147483644, 'XYZ Coloney, PQR Nagar , Beed'),
-(101, 'Yogesh Upare', 'yogeshupare23@gmail.com', 'yogi', 9284565664, 'beed'),
-(102, 'Mitali', 'mitali@gmai.com', '1234', 9284565664, 'beed'),
-(103, 'Rohit Upare', 'rohitupare@gmail.com', 'rohit', 8888288741, 'Beed');
+	INSERT INTO `users` (`id`, `name`, `email`, `password`, `mobile`, `address`) VALUES
+	(4, 'user', 'user@gmail.com', 'user@1234', 2147483644, 'XYZ Coloney, PQR Nagar , Beed'),
+	(7, 'hemant', 'hemant@gmail.com', 'hemant@123', 2147483644, 'XYZ Coloney, PQR Nagar , Beed');
 
 --
 -- Indexes for dumped tables
@@ -214,37 +202,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `issued_books`
 --
 ALTER TABLE `issued_books`
-  MODIFY `s_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `s_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
