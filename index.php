@@ -72,6 +72,16 @@
 
 			<?php
 				session_start();
+///
+
+
+// Check connection
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+} else {
+    echo "Connected successfully";
+}
+
 				$user_found = false;
 				if(isset($_POST['login'])){
 					
@@ -80,6 +90,12 @@
 					$query_run = mysqli_query($connection,$query);
 					while($row = mysqli_fetch_assoc($query_run)){
 						if($row['email'] == $_POST['email']){
+
+							// this for test
+							// echo $row['password'] ." = ". $_POST['password'];
+							// echo $row['name'] ." = ". $_POST['name'];
+							// echo $row['email'] ." = ". $_POST['email'];
+							// echo $row['id'] ." = ". $_POST['id'];
 							if($row['password'] == $_POST['password']){
 								$_SESSION['name'] = $row['name'];
 								$_SESSION['email'] = $row['email'];
