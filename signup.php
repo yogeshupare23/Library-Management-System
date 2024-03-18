@@ -16,6 +16,7 @@
   	</style>
 </head>
 <body>
+<?php include 'admin/db_connect.php';?>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -35,6 +36,7 @@
 		</div>
 	</nav><br>
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
+	<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4" id="side_bar">
 			<h5>Library Timing</h5>
@@ -66,7 +68,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Email ID:</label>
-					<input type="text" name="email" class="form-control" required>
+					<input type="email" name="email" class="form-control" required>
 				</div>
 				<div class="form-group">
 					<label for="name">Password:</label>
@@ -78,7 +80,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Address:</label>
-					<textarea rows="3" cols="40" class="form-control" name="address"></textarea>
+					<textarea rows="3" cols="40" class="form-control" name="address" required></textarea>
 				</div>
 				<button type="submit" class="btn btn-primary">Register</button>
 			</form>

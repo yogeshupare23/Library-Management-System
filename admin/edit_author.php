@@ -1,8 +1,9 @@
 <?php
 	require('functions.php');
+	include 'db_connect.php';
 	session_start();
-	$connection = mysqli_connect("localhost","root","");
-	$db = mysqli_select_db($connection,"lms");
+	// $connection = mysqli_connect("localhost","root","");
+	// $db = mysqli_select_db($connection,"lms");
 	$author_name = "";
 	$author_id = "";
 	$query = "select * from authors where author_id = $_GET[aid]";
@@ -85,7 +86,8 @@
 </nav>
 
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
-	<div class="row">
+	<div class="container-fluid">
+		<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
 			<form action="" method="post">
@@ -104,8 +106,8 @@
 
 <?php
 	if(isset($_POST['update'])){
-		$connection = mysqli_connect("localhost","root","");
-		$db = mysqli_select_db($connection,"lms");
+		// $connection = mysqli_connect("localhost","root","");
+		// $db = mysqli_select_db($connection,"lms");
 		$query = "update authors set author_name = '$_POST[author_name]' where author_id = $_GET[aid]";
 		$query_run = mysqli_query($connection,$query);
 		header("location:manage_author.php");

@@ -1,7 +1,8 @@
 <?php
+	include 'db_connect.php';
 	session_start();
-	$connection = mysqli_connect("localhost","root","");
-	$db = mysqli_select_db($connection,"lms");
+	// $connection = mysqli_connect("localhost","root","");
+	// $db = mysqli_select_db($connection,"lms");
 	$name = "";
 	$email = "";
 	$mobile = "";
@@ -52,7 +53,8 @@
 		</div>
 	</nav><br>
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
-	<div class="row">
+	<div class="container-fluid">
+		<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
 			<form>

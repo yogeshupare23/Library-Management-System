@@ -1,5 +1,6 @@
 <?php
 	require('functions.php');
+	include 'db_connect.php';
 	session_start();
 ?>
 <!DOCTYPE html>
@@ -74,7 +75,8 @@
 </nav>
 
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
-	<div class="row">
+	<div class="container-fluid">
+		<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<table class="table table-bordered table-hover">
@@ -86,8 +88,8 @@
 					</tr>
 				</thead>
 				<?php
-					$connection = mysqli_connect("localhost","root","");
-					$db = mysqli_select_db($connection,"lms");
+					// $connection = mysqli_connect("localhost","root","");
+					// $db = mysqli_select_db($connection,"lms");
 					$query = "select * from authors";
 					$query_run = mysqli_query($connection,$query);
 					while($row = mysqli_fetch_assoc($query_run)){
@@ -96,8 +98,8 @@
 							<td><?php echo $row['author_id'];?></td>
 							<td><?php echo $row['author_name'];?></td>
 							<td>
-								<button class="btn" name=""><a href="edit_author.php?aid=<?php echo $row['author_id'];?>">Edit</a></button>
-								<button class="btn" name=""><a href="delete_author.php?aid=<?php echo $row['author_id'];?>">Delete</a></button>
+								<button class="btn btn-block btn-outline-success" name=""><a href="edit_author.php?aid=<?php echo $row['author_id'];?>">Edit</a></button>
+								<button class="btn btn-block btn-outline-danger" name=""><a href="delete_author.php?aid=<?php echo $row['author_id'];?>">Delete</a></button>
 							</td>
 						</tr>
 						<?php

@@ -1,6 +1,7 @@
 <?php
-	$connection = mysqli_connect("localhost","root","");
-	$db = mysqli_select_db($connection,"lms");
+	include 'db_connect.php';
+	// $connection = mysqli_connect("localhost","root","");
+	// $db = mysqli_select_db($connection,"lms");
 	$query = "delete from authors where author_id = $_GET[aid]";
 	$query_run = mysqli_query($connection,$query);
 ?>

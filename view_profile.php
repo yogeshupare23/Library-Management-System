@@ -1,12 +1,13 @@
 <?php
+	include 'admin/db_connect.php';
 	session_start();
-	$connection = mysqli_connect("localhost","root","");
-	$db = mysqli_select_db($connection,"lms");
+	//$connection = mysqli_connect("localhost","root","");
+	//$db = mysqli_select_db($connection,"lms");
 	$name = "";
 	$email = "";
 	$mobile = "";
 	$address = "";
-	$query = "select * from users where email = '$_SESSION[email]'";
+	$query = "select name, email, mobile, address from users where email = '$_SESSION[email]'";
 	$query_run = mysqli_query($connection,$query);
 	while($row = mysqli_fetch_assoc($query_run)){
 		$name = $row['name'];
@@ -53,7 +54,8 @@
 		</div>
 	</nav><br>
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
-	<div class="row">
+	<div class="container-fluid">
+		<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
 			<form>

@@ -1,4 +1,5 @@
 <?php
+	include 'db_connect.php';
 	require('functions.php');
 	session_start();
 ?>
@@ -74,6 +75,7 @@
 </nav>
 
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
+	<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
@@ -112,8 +114,8 @@
 
 <?php
 	if(isset($_POST['add_book'])){
-		$connection = mysqli_connect("localhost","root","");
-		$db = mysqli_select_db($connection,"lms");
+		//$connection = mysqli_connect("localhost","root","");
+		//$db = mysqli_select_db($connection,"lms");
 		$query = "insert into books values(null,'$_POST[book_name]','$_POST[book_author]','$_POST[book_cat]',$_POST[book_no],$_POST[book_price])";
 		$query_run = mysqli_query($connection,$query);
 	}

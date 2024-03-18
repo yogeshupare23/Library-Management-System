@@ -39,17 +39,18 @@
 		</div>
 	</nav><br>
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed. </b> Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
+	<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
 			<form action="update_password.php" method="post">
 				<div class="form-group">
 					<label>Enter Current Password:</label>
-					<input type="password" name="old_password" class="form-control">
+					<input type="password" name="old_password" class="form-control" required>
 				</div>
 				<div class="form-group">
 					<label>Enter New Password:</label>
-					<input type="password" name="new_password" class="form-control">
+					<input type="password" name="new_password" class="form-control" required>
 				</div>
 				<button type="submit" name="update" class="btn btn-primary">Update Password</button>
 			</form>
@@ -57,4 +58,4 @@
 		<div class="col-md-4"></div>
 	</div>
 </body>
-</html>
+</html>	

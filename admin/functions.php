@@ -1,7 +1,9 @@
 <?php
+	include 'db_connect.php';
 	function get_user_count(){
-		$connection = mysqli_connect("localhost","root","");
-		$db = mysqli_select_db($connection,"lms");
+		require('db_connect.php');
+		//$connection = mysqli_connect("localhost","root","");
+		//$db = mysqli_select_db($connection,"lms");
 		$user_count = "";
 		$query = "select count(*) as user_count from users";
 		$query_run = mysqli_query($connection,$query);
@@ -12,8 +14,9 @@
 	}
 
 	function get_book_count(){
-		$connection = mysqli_connect("localhost","root","");
-		$db = mysqli_select_db($connection,"lms");
+		require('db_connect.php');
+		// $connection = mysqli_connect("localhost","root","");
+		// $db = mysqli_select_db($connection,"lms");
 		$book_count = "";
 		$query = "select count(*) as book_count from books";
 		$query_run = mysqli_query($connection,$query);
@@ -24,8 +27,9 @@
 	}
 
 	function get_category_count(){
-		$connection = mysqli_connect("localhost","root","");
-		$db = mysqli_select_db($connection,"lms");
+		require('db_connect.php');
+		// $connection = mysqli_connect("localhost","root","");
+		// $db = mysqli_select_db($connection,"lms");
 		$cat_count = "";
 		$query = "select count(*) as cat_count from category";
 		$query_run = mysqli_query($connection,$query);
@@ -36,8 +40,9 @@
 	}
 
 	function get_author_count(){
-		$connection = mysqli_connect("localhost","root","");
-		$db = mysqli_select_db($connection,"lms");
+		require('db_connect.php');
+		// $connection = mysqli_connect("localhost","root","");
+		// $db = mysqli_select_db($connection,"lms");
 		$author_count = "";
 		$query = "select count(*) as author_count from authors";
 		$query_run = mysqli_query($connection,$query);
@@ -48,8 +53,9 @@
 	}
 
 	function get_issued_book_count(){
-		$connection = mysqli_connect("localhost","root","");
-		$db = mysqli_select_db($connection,"lms");
+		require('db_connect.php');
+		// $connection = mysqli_connect("localhost","root","");
+		// $db = mysqli_select_db($connection,"lms");
 		$issued_book_count = "";
 		$query = "select count(*) as issued_book_count from issued_books";
 		$query_run = mysqli_query($connection,$query);

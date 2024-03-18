@@ -75,7 +75,8 @@
 </nav>
 
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed. </b> Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
-	<div class="row">
+	<div class="container-fluid">
+		<div class="row">
 		<div class="col-md-3">
 			<div class="card bg-light" style="width: 300px">
 				<div class="card-header">Registered Users:</div>

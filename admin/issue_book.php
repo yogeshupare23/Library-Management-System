@@ -1,4 +1,5 @@
 <?php
+	include 'db_connect.php';
 	require('functions.php');
 	session_start();
 ?>
@@ -74,7 +75,8 @@
 </nav>
 
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
-	<div class="row">
+	<div class="container-fluid">
+		<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
 			<form action="" method="post">
@@ -87,8 +89,8 @@
 					<select class="form-control" name="book_author">
 						<option>-Select author-</option>
 						<?php
-							$connection = mysqli_connect("localhost","root","");
-							$db = mysqli_select_db($connection,"lms");
+							// $connection = mysqli_connect("localhost","root","");
+							// $db = mysqli_select_db($connection,"lms");
 							$query = "select author_name from authors";
 							$query_run = mysqli_query($connection,$query);
 							while($row = mysqli_fetch_assoc($query_run)){
@@ -108,7 +110,7 @@
 				</div>
 				<div class="form-group">
 					<label>Issue Date:</label>
-					<input type="text" name="issue_date" class="form-control" value="<?php echo date("yy-m-d");?>" required="">
+					<input type="text" name="issue_date" class="form-control" value="<?php echo date("Y-m-d");?>" required="">
 				</div>	
 				</div>
 				<button class="btn btn-primary" name="issue_book">Issue Book</button>
@@ -122,8 +124,8 @@
 
 <?php
 	if(isset($_POST['issue_book'])){
-		$connection = mysqli_connect("localhost","root","");
-		$db = mysqli_select_db($connection,"lms");
+		// $connection = mysqli_connect("localhost","root","");
+		// $db = mysqli_select_db($connection,"lms");
 		$query = "insert into issued_books values(null,$_POST[book_no],'$_POST[book_name]','$_POST[book_author]',$_POST[student_id],1,'$_POST[issue_date]')";
 		$query_run = mysqli_query($connection,$query);
 	}

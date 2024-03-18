@@ -16,6 +16,7 @@
   	</style>
 </head>
 <body>
+<?php include 'admin/db_connect.php';?>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -36,6 +37,7 @@
 	</nav><br>
 	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM
 </marquee></span><br><br>
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4" id="side_bar">
 			<h5>Library Timing</h5>
@@ -59,7 +61,7 @@
 			<form action="" method="post">
 				<div class="form-group">
 					<label for="name">Email ID:</label>
-					<input type="text" name="email" class="form-control" required>
+					<input type="email" name="email" class="form-control" required>
 				</div>
 				<div class="form-group">
 					<label for="name">Password:</label>
@@ -70,9 +72,10 @@
 
 			<?php
 				session_start();
+				$user_found = false;
 				if(isset($_POST['login'])){
-					$connection = mysqli_connect("localhost","root","");
-					$db = mysqli_select_db($connection,"lms");
+					
+					//$db = mysqli_select_db($connection,"lms");
 					$query = "select * from users where email = '$_POST[email]'";
 					$query_run = mysqli_query($connection,$query);
 					while($row = mysqli_fetch_assoc($query_run)){
@@ -85,14 +88,23 @@
 							}
 							else{
 								?>
-								<br><br><center><span class="alert-danger">Wrong Password</span></center>
+								<br><br><center><span class="alert-danger">Invaild Email or Password</span></center>
 								<?php
+								exit();
 							}
 						}
 					}
 				}
+				if (!$user_found && isset($_POST['login']))  {
+					?>
+					<br><br><center><span class="alert-danger">Invaild Email or Password</span></center>
+					<?php
+				}
 			?>
-	</div>
-	</div>
+			
+	
+
+</div>
+
 </body>
 </html>
