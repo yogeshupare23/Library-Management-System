@@ -92,10 +92,10 @@
 						if($row['email'] == $_POST['email']){
 
 							// this for test
-							 echo $row['password'] ." = ". $_POST['password'];
-							echo $row['name'] ." = ". $_POST['name'];
-							echo $row['email'] ." = ". $_POST['email'];
-							echo $row['id'] ." = ". $_POST['id'];
+							 echo $row['password'] ." = ". $_POST['password'] ."<br>";
+							echo $row['name'] ." = ". $_POST['name'] . "<br>";
+							echo $row['email'] ." = ". $_POST['email']  . "<br>";
+							echo $row['id'] ." = ". $_POST['id']  . "<br>";
 							
 							if($row['password'] == $_POST['password']){
 								$_SESSION['name'] = $row['name'];
