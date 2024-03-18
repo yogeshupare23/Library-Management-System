@@ -76,11 +76,11 @@
 
 
 // Check connection
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-} else {
-    echo "Connected successfully";
-}
+// // if (!$connection) {
+//     die("Connection failed: " . mysqli_connect_error());
+// } else {
+//     echo "Connected successfully";
+// }
 
 				$user_found = false;
 				if(isset($_POST['login'])){
@@ -92,15 +92,16 @@ if (!$connection) {
 						if($row['email'] == $_POST['email']){
 
 							// this for test
-							// echo $row['password'] ." = ". $_POST['password'];
-							// echo $row['name'] ." = ". $_POST['name'];
-							// echo $row['email'] ." = ". $_POST['email'];
-							// echo $row['id'] ." = ". $_POST['id'];
+							 echo $row['password'] ." = ". $_POST['password'];
+							echo $row['name'] ." = ". $_POST['name'];
+							echo $row['email'] ." = ". $_POST['email'];
+							echo $row['id'] ." = ". $_POST['id'];
+							
 							if($row['password'] == $_POST['password']){
 								$_SESSION['name'] = $row['name'];
 								$_SESSION['email'] = $row['email'];
 								$_SESSION['id'] = $row['id'];
-								header("Location:user_dashboard.php");
+								//header("Location:user_dashboard.php");
 							}
 							else{
 								?>
