@@ -92,16 +92,16 @@
 						if($row['email'] == $_POST['email']){
 
 							// this for test
-							 echo $row['password'] ." = ". $_POST['password'] ."<br>";
-							echo $row['name'] ." = ". $_POST['name'] . "<br>";
-							echo $row['email'] ." = ". $_POST['email']  . "<br>";
-							echo $row['id'] ." = ". $_POST['id']  . "<br>";
+							//  echo $row['password'] ." = ". $_POST['password'] ."<br>";
+							// echo $row['name'] ." = ". $_POST['name'] . "<br>";
+							// echo $row['email'] ." = ". $_POST['email']  . "<br>";
+							// echo $row['id'] ." = ". $_POST['id']  . "<br>";
 							
 							if($row['password'] == $_POST['password']){
 								$_SESSION['name'] = $row['name'];
 								$_SESSION['email'] = $row['email'];
 								$_SESSION['id'] = $row['id'];
-								//header("Location:user_dashboard.php");
+								header("Location:user_dashboard.php");
 							}
 							else{
 								?>
