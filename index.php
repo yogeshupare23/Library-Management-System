@@ -1,6 +1,6 @@
 <?php
-include 'admin/db_connect.php';
 session_start();
+include 'admin/db_connect.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -75,7 +75,8 @@ session_start();
 			</form>
 
 			<?php
-				//session_start();
+			//	session_start();
+///
 
 
 // Check connection
