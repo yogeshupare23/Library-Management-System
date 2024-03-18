@@ -1,3 +1,7 @@
+<?php
+include 'admin/db_connect.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +20,7 @@
   	</style>
 </head>
 <body>
-<?php include 'admin/db_connect.php';?>
+<?php //include 'admin/db_connect.php';?>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -71,8 +75,7 @@
 			</form>
 
 			<?php
-				session_start();
-///
+				//session_start();
 
 
 // Check connection
@@ -124,4 +127,9 @@
 </div>
 
 </body>
-</html>
+</html> 
+
+
+
+
+
