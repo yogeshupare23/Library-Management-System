@@ -24,8 +24,8 @@ if (isset ($_POST['login'])) {
 				$_SESSION['name'] = $row['name'];
 				$_SESSION['email'] = $row['email'];
 				$_SESSION['id'] = $row['id'];
-				// "welcome";
-				header("location: welcome.php");
+
+				header("Location:user_dashboard.php");
 			} else {
 				$error = "Your Login Name or Password is invalid";
 			}
@@ -42,7 +42,7 @@ if (isset ($_POST['login'])) {
 	}
 }
 //if (!$user_found && isset ($_POST['login'])) {
-//    ?>
+//     ?>
 <!--<br><br>
 	<center><span class="alert-danger">Invalid Email or Password</span></center> -->
 <?php
@@ -68,7 +68,7 @@ if (isset ($_POST['login'])) {
 </head>
 
 <body>
-	<?php //include 'admin/db_connect.php';                          ?>
+	<?php //include 'admin/db_connect.php';                           ?>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
