@@ -1,26 +1,74 @@
 <?php
-session_start();
 include 'admin/db_connect.php';
+session_start();
+$user_found = false;
+if (isset ($_POST['login'])) {
+
+	//$db = mysqli_select_db($connection,"lms");
+	$email = mysqli_real_escape_string($connection, $_POST['email']);
+	$password = mysqli_real_escape_string($connection, $_POST['password']);
+	//$query = "select email from users where email = '$_POST[email]'";
+	$query = "SELECT email,name,id FROM users WHERE email = '$email' and password = '$password'";
+	$query_run = mysqli_query($connection, $query);
+	while ($row = mysqli_fetch_assoc($query_run)) {
+		if ($row['email'] == $email) {
+
+			// this for test
+			//  echo $row['password'] ." = ". $_POST['password'] ."<br>";
+			// echo $row['name'] ." = ". $_POST['name'] . "<br>";
+			// echo $row['email'] ." = ". $_POST['email']  . "<br>";
+			// echo $row['id'] ." = ". $_POST['id']  . "<br>";
+			$count = mysqli_num_rows($query_run);
+			if ($count == 1) {
+				//session_register("email");				
+				$_SESSION['name'] = $row['name'];
+				$_SESSION['email'] = $row['email'];
+				$_SESSION['id'] = $row['id'];
+				// "welcome";
+				header("location: welcome.php");
+			} else {
+				$error = "Your Login Name or Password is invalid";
+			}
+
+			//header("Location:user_dashboard.php");
+
+		} else {
+			?>
+			<br><br>
+			<center><span class="alert-danger">Invaild Email or Password</span></center>
+			<?php
+			exit();
+		}
+	}
+}
+//if (!$user_found && isset ($_POST['login'])) {
+//    ?>
+<!--<br><br>
+	<center><span class="alert-danger">Invalid Email or Password</span></center> -->
+<?php
+//}
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>LMS</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width,intial-scale=1">
 	<link rel="stylesheet" type="text/css" href="bootstrap-4.4.1/css/bootstrap.min.css">
-  	<script type="text/javascript" src="bootstrap-4.4.1/js/juqery_latest.js"></script>
-  	<script type="text/javascript" src="bootstrap-4.4.1/js/bootstrap.min.js"></script>
-  	<style type="text/css">
-  		#side_bar{
-  			background-color: whitesmoke;
-  			padding: 50px;
-  			width: 300px;
-  			height: 450px;
-  		}
-  	</style>
+	<script type="text/javascript" src="bootstrap-4.4.1/js/juqery_latest.js"></script>
+	<script type="text/javascript" src="bootstrap-4.4.1/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		#side_bar {
+			background-color: whitesmoke;
+			padding: 50px;
+			width: 300px;
+			height: 450px;
+		}
+	</style>
 </head>
+
 <body>
-<?php //include 'admin/db_connect.php';?>
+	<?php //include 'admin/db_connect.php';                          ?>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -39,98 +87,61 @@ include 'admin/db_connect.php';
 			</ul>
 		</div>
 	</nav><br>
-	<span><marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM
-</marquee></span><br><br>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-4" id="side_bar">
-			<h5>Library Timing</h5>
-			<ul>
-				<li>Opening Timing: 8:00 AM</li>
-				<li>Closing Timing: 8:00 PM</li>
-				<li>(Sunday off)</li>
-			</ul>
-			<h5>What we provide ?</h5>
-			<ul>
-				<li>Full furniture</li>
-				<li>Free Wi-fi</li>
-				<li>News Papers</li>
-				<li>Discussion Room</li>
-				<li>RO Water</li>
-				<li>Peacefull Environment</li>
-			</ul>
-		</div>		
-		<div class="col-md-8" id="main_content">
-			<center><h3>User Login Form</h3></center>
-			<form action="" method="post">
-				<div class="form-group">
-					<label for="name">Email ID:</label>
-					<input type="email" name="email" class="form-control" required>
-				</div>
-				<div class="form-group">
-					<label for="name">Password:</label>
-					<input type="password" name="password" class="form-control" required>
-				</div>
-				<button type="submit" name="login" class="btn btn-primary">Login</button>
-			</form>
+	<span>
+		<marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM
+		</marquee>
+	</span><br><br>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4" id="side_bar">
+				<h5>Library Timing</h5>
+				<ul>
+					<li>Opening Timing: 8:00 AM</li>
+					<li>Closing Timing: 8:00 PM</li>
+					<li>(Sunday off)</li>
+				</ul>
+				<h5>What we provide ?</h5>
+				<ul>
+					<li>Full furniture</li>
+					<li>Free Wi-fi</li>
+					<li>News Papers</li>
+					<li>Discussion Room</li>
+					<li>RO Water</li>
+					<li>Peacefull Environment</li>
+				</ul>
+			</div>
+			<div class="col-md-8" id="main_content">
+				<center>
+					<h3>User Login Form</h3>
+				</center>
+				<form action="" method="post">
+					<div class="form-group">
+						<label for="name">Email ID:</label>
+						<input type="email" name="email" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="name">Password:</label>
+						<input type="password" name="password" class="form-control" required>
+					</div>
+					<button type="submit" name="login" class="btn btn-primary">Login</button>
+				</form>
 
-			<?php
-			//	session_start();
-///
-
-
-// Check connection
-// // if (!$connection) {
-//     die("Connection failed: " . mysqli_connect_error());
-// } else {
-//     echo "Connected successfully";
-// }
-
-				$user_found = false;
-				if(isset($_POST['login'])){
-					
-					//$db = mysqli_select_db($connection,"lms");
-					$query = "select * from users where email = '$_POST[email]'";
-					$query_run = mysqli_query($connection,$query);
-					while($row = mysqli_fetch_assoc($query_run)){
-						if($row['email'] == $_POST['email']){
-
-							// this for test
-							//  echo $row['password'] ." = ". $_POST['password'] ."<br>";
-							// echo $row['name'] ." = ". $_POST['name'] . "<br>";
-							// echo $row['email'] ." = ". $_POST['email']  . "<br>";
-							// echo $row['id'] ." = ". $_POST['id']  . "<br>";
-							
-							if($row['password'] == $_POST['password']){
-								$_SESSION['name'] = $row['name'];
-								$_SESSION['email'] = $row['email'];
-								$_SESSION['id'] = $row['id'];
-								header("Location:user_dashboard.php");
-							}
-							else{
-								?>
-								<br><br><center><span class="alert-danger">Invaild Email or Password</span></center>
-								<?php
-								exit();
-							}
-						}
-					}
-				}
-				if (!$user_found && isset($_POST['login']))  {
+				<?php
+				//////	
+				if (!$user_found && isset ($_POST['login'])) {
 					?>
-					<br><br><center><span class="alert-danger">Invaild Email or Password</span></center>
+					<br><br>
+					<center><span class="alert-danger">Invalid Email or Password</span></center>
 					<?php
 				}
-			?>
-			
-	
+				?>
 
-</div>
+
+
+
+
+			</div>
 
 </body>
-</html> 
 
-
-
-
-
+</html>
