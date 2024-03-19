@@ -66,61 +66,85 @@ if (isset ($_POST['login'])) {
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.php">Library Management System(LMS)</a>
+				<a class="navbar-brand" href="index.php"><b>Library Management System(LMS)</b></a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="nav-item">
-					<a class="nav-link" href="index.php">Admin Login</a>
+					<a class="nav-link" href="index.php"><b>Admin Login</b></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">User Login</a>
+					<a class="nav-link" href="../index.php"><b>User Login</b></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="../signup.php">Register</a>
+					<a class="nav-link" href="../signup.php"><b>Register </b></a>
 				</li>
 			</ul>
 		</div>
-	</nav><br>
-	<span>
-		<marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM
-		</marquee>
-	</span><br><br>
-	<div class="container-fluid">
+	</nav>
+	<div class="container-fluid mt-3">
 		<div class="row">
-			<div class="col-md-4" id="side_bar">
-				<h5>Library Timing</h5>
-				<ul>
-					<li>Opening Timing: 8:00 AM</li>
-					<li>Closing Timing: 8:00 PM</li>
-					<li>(Sunday off)</li>
-				</ul>
-				<h5>What we provide ?</h5>
-				<ul>
-					<li>Full furniture</li>
-					<li>Free Wi-fi</li>
-					<li>News Papers</li>
-					<li>Discussion Room</li>
-					<li>RO Water</li>
-					<li>Peacefull Environment</li>
-				</ul>
+			<div class="col-md-12">
+				<div class="alert alert-danger">
+					<marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close
+						at
+						8:00 PM
+					</marquee>
+				</div>
 			</div>
-			<div class="col-md-8" id="main_content">
-				<center>
-					<h3>Admin Login Form</h3>
-				</center>
-				<form action="" method="post">
-					<div class="form-group">
-						<label for="name">Email ID:</label>
-						<input type="email" name="email" class="form-control" required>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-header alert-info">
+						Library Timing
 					</div>
-					<div class="form-group">
-						<label for="name">Password:</label>
-						<input type="password" name="password" class="form-control" required>
-					</div>
-					<button type="submit" name="login" class="btn btn-primary">Login</button>
-				</form>
-				<?php showLoginStatus($user_found); ?>
+					<div class="card-body">
 
+
+						<ul>
+							<li>Opening Timing: 8:00 AM</li>
+							<li>Closing Timing: 8:00 PM</li>
+							<li>(Sunday off)</li>
+						</ul>
+					</div>
+					<div class="card-header alert-info">
+						What we provide ?
+					</div>
+					<div class="card-body">
+
+						<ul>
+							<li>Full furniture</li>
+							<li>Free Wi-fi</li>
+							<li>News Papers</li>
+							<li>Discussion Room</li>
+							<li>RO Water</li>
+							<li>Peacefull Environment</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-8">
+				<div class="card bg-light">
+					<div class="card-header alert-success">
+						Admin Login
+					</div>
+					<div class="card-body">
+
+						<form action="" method="post">
+							<div class="form-group">
+								<label for="name">Email ID:</label>
+								<input type="email" name="email" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label for="name">Password:</label>
+								<input type="password" name="password" class="form-control" required>
+							</div>
+							<button type="submit" name="login" class="btn btn-primary">Login</button>
+						</form>
+						<?php showLoginStatus($user_found); ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

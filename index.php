@@ -63,31 +63,39 @@ if (isset ($_POST['login'])) {
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-info bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light alert-info">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.php">Library Management System(LMS)</a>
+				<a class="navbar-brand" href="index.php"><b>Library Management System(LMS)</b></a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="nav-item">
-					<a class="nav-link" href="admin/index.php">Admin Login</a>
+					<a class="nav-link" href="admin/index.php"><b>Admin Login</b></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="index.php">User Login</a>
+					<a class="nav-link" href="index.php"><b>User Login</b></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="signup.php">Register</a>
+					<a class="nav-link" href="signup.php"><b>Register</b></a>
 				</li>
 			</ul>
 		</div>
-	</nav><br>
-	<span class="alert alert-info">
-		<marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close at 8:00 PM
-		</marquee>
-	</span><br><br>
-	<div class="container-fluid">
+	</nav>
+
+	<div class="container-fluid mt-3">
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-12">
+				<div class="alert alert-danger">
+					<marquee><b>Balbhim Art's,Commerce & Science Colleage, Beed.</b> Library opens at 8:00 AM and close
+						at
+						8:00 PM
+					</marquee>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
 				<div class="card">
 					<div class="card-header alert-info">
 						Library Timing
@@ -118,7 +126,7 @@ if (isset ($_POST['login'])) {
 				</div>
 
 			</div>
-			<div class="col-md-7" id="main_content">
+			<div class="col-md-8">
 				<div class="card bg-light">
 					<div class="card-header alert-success">
 						Student Login

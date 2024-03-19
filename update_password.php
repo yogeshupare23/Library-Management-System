@@ -1,36 +1,12 @@
 <?php
-// this is old code
- /*include 'admin/db_connect.php';
-	session_start();
-	//$connection = mysqli_connect("localhost","root","");
-	//$db = mysqli_select_db($connection,"lms");
-	$password = "";
-	$query = "select * from users where email = '$_SESSION[email]'";
-	$query_run = mysqli_query($connection,$query);
-	while($row = mysqli_fetch_assoc($query_run)){
-		$password = $row['password'];
-	}
-	if($password == $_POST['old_password']){
-		$query = "update users set password = '$_POST[new_password]' where email = '$_SESSION[email]'";
-		$query_run = mysqli_query($connection,$query);
-	}
-	*/
-	?>
-<!--<script type="text/javascript">
-	alert("Updated successfully...");
-	window.location.href = "user_dashboard.php";
-</script>
--->
-<?php
 include 'admin/db_connect.php';
 session_start();
-
 // Initialize variables
 $password = "";
 $new_password = "";
 
 // Check if form is submitted with old and new passwords
-if(isset($_POST['old_password']) && isset($_POST['new_password'])) {
+if (isset ($_POST['old_password']) && isset ($_POST['new_password'])) {
     // Retrieve old and new passwords from form
     $old_password = $_POST['old_password'];
     $new_password = $_POST['new_password'];
@@ -40,25 +16,27 @@ if(isset($_POST['old_password']) && isset($_POST['new_password'])) {
     $query_run = mysqli_query($connection, $query);
 
     // Check if query executed successfully
-    if($query_run) {
+    if ($query_run) {
         // Fetch the password from the database
         $row = mysqli_fetch_assoc($query_run);
-        if($row) {
+        if ($row) {
             $password = $row['password'];
         }
 
         // Check if old password matches the one in the database
-        if($password == $old_password) {
+        if ($password == $old_password) {
             // Update the password
             $update_query = "UPDATE users SET password = '$new_password' WHERE email = '$_SESSION[email]'";
             $update_query_run = mysqli_query($connection, $update_query);
 
             // Check if password was updated successfully
-            if($update_query_run) {
+            if ($update_query_run) {
+
                 echo '<script type="text/javascript">
                         alert("Password updated successfully...");
-                        window.location.href = "user_dashboard.php";
+                        window.location.href = "logout.php";
                     </script>';
+                // header("Location:index.php");
                 exit();
             } else {
                 echo '<script type="text/javascript">
