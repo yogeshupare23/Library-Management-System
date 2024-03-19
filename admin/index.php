@@ -3,34 +3,45 @@
 require ('db_connect.php');
 session_start();
 $user_found = false;
+function showLoginStatus($user_found)
+{
+	if (isset ($_POST['login'])) {
+		if (!$user_found) {
+			echo '<div class="alert alert-danger mt-2" role="alert">
+		Invalid username or password. Please try again.
+		</div>';
+		} else {
+			echo '<div class="alert alert-success mt-2" role="alert">
+		Logged in successfully.
+		</div>';
 
-if (isset ($_POST['login'])) {
-	// $connection = mysqli_connect("localhost","root","");
-	// $db = mysqli_select_db($connection,"lms");
-	$query = "select * from admins where email = '$_POST[email]'";
-	$query_run = mysqli_query($connection, $query);
-	while ($row = mysqli_fetch_assoc($query_run)) {
-		if ($row['email'] == $_POST['email']) {
-			if ($row['password'] == $_POST['password']) {
-				$_SESSION['name'] = $row['name'];
-				$_SESSION['email'] = $row['email'];
-				header("Location:admin_dashboard.php");
-			} else {
-				?>
-				<br><br>
-				<center><span class="alert-danger">Invaild Email or Password</span></center>
-				<?php
-				exit();
-			}
 		}
 	}
-
 }
-if (!$user_found && isset ($_POST['login'])) {
-	?>
-	<br><br>
-	<center><span class="alert-danger">Invaild Email or Password</span></center>
-	<?php
+if (isset ($_POST['login'])) {
+
+	//$db = mysqli_select_db($connection,"lms");
+	$email = mysqli_real_escape_string($connection, $_POST['email']);
+	$password = mysqli_real_escape_string($connection, $_POST['password']);
+	//$query = "select email from users where email = '$_POST[email]'";
+	$query = "SELECT email,name,id FROM admins WHERE email = '$email' and password = '$password'";
+	$query_run = mysqli_query($connection, $query);
+	while ($row = mysqli_fetch_assoc($query_run)) {
+		if ($row['email'] == $email) {
+			$count = mysqli_num_rows($query_run);
+			if ($count == 1) {
+				$_SESSION['name'] = $row['name'];
+				$_SESSION['email'] = $row['email'];
+				$_SESSION['id'] = $row['id'];
+				$_SESSION['role'] = "admin";
+				header("Location:admin_dashboard.php");
+			} else {
+				$user_found = false;
+			}
+		} else {
+			$user_found = false;
+		}
+	}
 }
 ?>
 <html>
@@ -108,10 +119,11 @@ if (!$user_found && isset ($_POST['login'])) {
 					</div>
 					<button type="submit" name="login" class="btn btn-primary">Login</button>
 				</form>
-
+				<?php showLoginStatus($user_found); ?>
 
 			</div>
 		</div>
+	</div>
 </body>
 
 </html>
