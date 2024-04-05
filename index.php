@@ -132,7 +132,6 @@ if (isset ($_POST['login'])) {
 						Student Login
 					</div>
 					<div class="card-body">
-
 						<form action="" method="post">
 							<div class="form-group">
 								<label for="name">Email ID:</label>
@@ -146,14 +145,29 @@ if (isset ($_POST['login'])) {
 						</form>
 						<?php showLoginStatus($user_found); ?>
 
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card bg-light">
+					<div class="col-md-12">
+						<div class=" card-header alert-success">
+							ChatBot
+						</div>
+						<div class="card-body">
+							<iframe
+								src='https://webchat.botframework.com/embed/homeapplangservice-bot?s=HzwqL1TpEk8.tuuHz3TLOHD2giU3WdnbMjiBrRPL_z8UZA2gPp9I9E8'></iframe>
+						</div>
+
 
 					</div>
 				</div>
 
 
 			</div>
+
 		</div>
-	</div>
+
 </body>
 
 </html>
